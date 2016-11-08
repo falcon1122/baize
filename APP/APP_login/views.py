@@ -8,11 +8,14 @@
 
 ###################################################################################################
 from django.shortcuts import render
-from django.http import HttpResponseRedirect,JsonResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import auth
+from django.views.decorators.csrf import csrf_exempt
+import json
 import config as C
 import constant as D
 
+@csrf_exempt
 def user_login(request):
     '''
     用户登录视图，实现登录验证，登出，以及记住密码
@@ -22,26 +25,28 @@ def user_login(request):
         data = request.POST
         action = data.get('action')
         username = data.get('username','')
-#        request.session['username'] == username
+        request.session['username'] = username
         if action == 'login':
             password = data.get('password','')
             remember_me = data.get('remeber_me',C.REMEBER_ME)
             redirect = data.get('redirect',C.REDIRECT)
             user = auth.authenticate(username=username,password=password)
- #           expity_time = int(remember_me) * 3600
- #           request.session.set_expiry(expity_time)
-            if user is not None and user.is_active():
+            expity_time = int(remember_me) * 3600
+            request.session.set_expiry(expity_time)
+            if user is not None and user.is_active:
                 auth.login(request,user)
                 result['success'] = True
                 result['msg'] = D.MSG_SUCCESS
                 result['redirect'] = redirect
-                HttpResponseRedirect(redirect)
             else:
                 result['success'] = False
                 result['msg'] = D.MSG_FAILED
-            JsonResponse(result)
+            response = json.dumps(result)
+            return HttpResponse(response)
         elif action == 'logout':
             auth.logout(request)
+            return HttpResponse("LOGOUT NOW")
+           # return HttpResponseRedirect("/login")
 
 
 
