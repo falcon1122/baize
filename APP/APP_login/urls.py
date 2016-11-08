@@ -7,9 +7,8 @@
 
 
 ###################################################################################################
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
-from APP.APP_login.views import user_login
+from django.conf.urls import patterns,url
+from APP.APP_login.views import user_login,index
 
 urlpatterns = patterns('',
     url(r'^$', user_login),
