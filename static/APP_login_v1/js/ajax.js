@@ -18,7 +18,7 @@ function fun_user_login_check(e){
     var formdata = {"action":action,"username":username,"password":password,"remember_me":REMEMBER_ME,"redirect":REDIRECT};
 
     if(METHOD == "GET"){
-        SIGNIN_URL = SIGNIN_URL + "?action=" + action + "$username=" + username + "$password=" + password  + "$remember_me=" + REMEMBER_ME + "$redirect=" + REDIRECT;
+        SIGNIN_URL = SIGNIN_URL + "?action=" + action + "&username=" + username + "&password=" + password  + "&remember_me=" + REMEMBER_ME + "&redirect=" + REDIRECT;
         formdata = undefined;
         datatype = undefined;
     }
