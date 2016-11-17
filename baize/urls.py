@@ -17,4 +17,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^demo/', include('APP.APP_demo.urls')),
+    url(r'^api/user_login/',include('APP.APP_login.urls')),
 )
