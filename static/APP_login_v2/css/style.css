@@ -1,0 +1,38 @@
+/*navbar*/ 
+body{
+  padding-top: 70px;
+}
+.header nav{
+  padding:0 40px;
+}
+.content{
+  margin: 13.9% 0;
+}
+.content form{
+  padding: 35px 0px;
+  margin-left:30px;
+}
+.content .logo-elem{
+  text-align: center;
+}
+.form-group{
+  border-radius: 3px;
+}
+.footer{
+  text-align: center;
+}
+.footer .col-lg-12{
+  background: #E7E7E7;
+  padding:10px 0;
+}
+.forget-password{
+  float:right;
+}
+.cookie-label{
+  margin-left:5px;
+}
+/*comment*/
+a.active:hover{
+  text-decoration: none;
+}
+
